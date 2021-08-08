@@ -46,3 +46,10 @@ p map([]) { |value| true } == []
 p map(['a', 'b', 'c', 'd']) { |value| false } == [false, false, false, false]
 p map(['a', 'b', 'c', 'd']) { |value| value.upcase } == ['A', 'B', 'C', 'D']
 p map([1, 3, 4]) { |value| (1..value).to_a } == [[1], [1, 2, 3], [1, 2, 3, 4]]
+
+# with hash
+p map({a: 1, b: 2, c: 3}) { |k,v| [k, v * 2] } == [[:a, 2], [:b, 4], [:c, 6]]
+
+# with set
+require 'set'
+p map(Set[1,2,3,4,5]) { |val| val**2 } == [1, 4, 9, 16, 25]
